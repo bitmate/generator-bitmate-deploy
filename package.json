@@ -1,0 +1,47 @@
+{
+  "name": "@oligibson/generator-bitmate-deploy",
+  "version": "1.0.5",
+  "description": "BitMate generator for handling deployment config",
+  "homepage": "https://bitmate.io/",
+  "main": "index.js",
+  "author": "BitMate",
+  "license": "UNICENSED",
+  "dependencies": {
+    "@oligibson/bitmate-generator": "^1.0.5"
+  },
+  "devDependencies": {
+    "ava": "^0.18.2",
+    "babel-eslint": "^7.1.1",
+    "chai": "^3.5.0",
+    "chai-spies": "^0.7.1",
+    "cross-spawn": "^5.0.1",
+    "eslint": "^3.15.0",
+    "eslint-config-xo-space": "^0.15.0",
+    "eslint-plugin-babel": "^4.0.1",
+    "gulp": "gulpjs/gulp#4.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-exclude-gitignore": "^1.1.1",
+    "gulp-nsp": "^2.4.2",
+    "nyc": "^10.1.2"
+  },
+  "ava": {
+    "files": [
+      "test/app/**/*.js"
+    ]
+  },
+  "nyc": {
+    "include": [
+      "generators/**/*.js"
+    ],
+    "exclude": [
+      "generators/**/templates/**"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "xo-space/esnext"
+  },
+  "scripts": {
+    "test": "gulp test",
+    "prepublish": "gulp prepublish"
+  }
+}
