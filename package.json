@@ -1,13 +1,14 @@
 {
   "name": "@oligibson/generator-bitmate-deploy",
-  "version": "1.0.5",
+  "version": "1.0.0",
   "description": "BitMate generator for handling deployment config",
   "homepage": "https://bitmate.io/",
   "main": "index.js",
   "author": "BitMate",
   "license": "UNICENSED",
   "dependencies": {
-    "@oligibson/bitmate-generator": "^1.0.5"
+    "@oligibson/bitmate-generator": "^1.0.5",
+    "@oligibson/generator-bitmate-readme": "^1.0.5"
   },
   "devDependencies": {
     "ava": "^0.18.2",

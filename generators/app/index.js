@@ -4,10 +4,11 @@ const bitmate = require('@oligibson/bitmate-generator');
 module.exports = bitmate.Base.extend({
 
   prompting() {
+    this.props = {};
     this.option('docker', {type: Boolean, required: true});
 
     const prompts = [{
-      type: 'boolean',
+      type: 'confirm',
       name: 'docker',
       message: 'Would you like to use Docker?'
     }];
@@ -21,9 +22,23 @@ module.exports = bitmate.Base.extend({
     this.type = this.options.server === 'none' ? 'client' : 'server';
   },
 
+  composing() {
+    if (this.props.docker) {
+      this.composeWith('bitmate-readme', {
+        options: {
+          server: this.options.server,
+          client: this.options.client,
+          docker: this.props.docker
+        }
+      }, {
+        local: require.resolve('@oligibson/generator-bitmate-readme/generators/deploy')
+      });
+    }
+  },
+
   writing() {
     if (this.props.docker) {
-      this.copyTemplate(`Dockerfile-${this.type}`, 'Dockerfile', this.props);
+      this.copyTemplate(`Dockerfile-${this.type}.txt`, 'Dockerfile', this.props);
     }
   }
 
